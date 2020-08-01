@@ -6,13 +6,13 @@ file_system:
   home: <%= Rails.root.join("staged_files") %>
 
 dropbox:
-  client_id: <%= ENV["DROPBOX_CLIENT_ID"] %>
-  client_secret: <%= ENV["DROPBOX_CLIENT_SECRET"] %>
+  client_id: <%= 'dropbox-client-id' || ENV["DROPBOX_CLIENT_ID"] %>
+  client_secret: <%= 'secret' || ENV["DROPBOX_CLIENT_SECRET"] %>
   download_directory: tmp/
 
 box:
-  client_id: <%= ENV["BOX_CLIENT_ID"] %>
-  client_secret: <%= ENV["BOX_CLIENT_SECRET"] %>
+  client_id: <%= 'box-client-id' || ENV["BOX_CLIENT_ID"] %>
+  client_secret: <%= 'secret' || ENV["BOX_CLIENT_SECRET"] %>
 
 # google_drive:
 #   client_id: YOUR_GOOGLE_API_CLIENT_ID
