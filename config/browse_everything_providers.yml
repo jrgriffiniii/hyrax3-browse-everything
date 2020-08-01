@@ -3,14 +3,17 @@
 # The file_system provider can be a path to any directory on the server where your application is running.
 #
 file_system:
-  home: /Users/griffinj/src/github.com/jrgriffiniii/my_app
-# dropbox:
-#   client_id: YOUR_DROPBOX_APP_KEY
-#   client_secret: YOUR_DROPBOX_APP_SECRET
-#   download_directory: tmp/
-# box:
-#   client_id: YOUR_BOX_CLIENT_ID
-#   client_secret: YOUR_BOX_CLIENT_SECRET
+  home: <%= Rails.root.join("staged_files") %>
+
+dropbox:
+  client_id: <%= ENV["DROPBOX_CLIENT_ID"] %>
+  client_secret: <%= ENV["DROPBOX_CLIENT_SECRET"] %>
+  download_directory: tmp/
+
+box:
+  client_id: <%= ENV["BOX_CLIENT_ID"] %>
+  client_secret: <%= ENV["BOX_CLIENT_SECRET"] %>
+
 # google_drive:
 #   client_id: YOUR_GOOGLE_API_CLIENT_ID
 #   client_secret: YOUR_GOOGLE_API_CLIENT_SECRET

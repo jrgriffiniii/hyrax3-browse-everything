@@ -1,0 +1,8 @@
+it:
+  hyrax:
+    icons:
+      my_work:     'fa fa-file-text-o'
+    select_type:
+      my_work:
+        description:        "My work opere"
+        name:               "My Work"

@@ -1,24 +1,62 @@
-# README
+# Hyrax Development Environment for browse-everything
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Getting Started
 
-Things you may want to cover:
+### Installing the Dependencies
+```
+bundle install
+```
 
-* Ruby version
+### Starting the Servers
+```
+bundle exec rake server:development
+bundle exec rails s -p 3000
+```
 
-* System dependencies
+### Initializing Hyrax
+```
+bundle exec rails hyrax:default_admin_set:create
+bundle exec rails generate hyrax:work MyWork
+```
 
-* Configuration
+### Creating an Admin. User
 
-* Database creation
+First, please visit [http://localhost:3000/users/sign_up] and sign up for a new
+user account. Then please install `hydra-role-management` with the following
+steps:
 
-* Database initialization
+Firstly, please stop the Rails server in the terminal running `bundle exec rails s -p 3000`.
 
-* How to run the test suite
+Then, please add the following to your application's Gemfile:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+gem 'hydra-role-management'
+```
 
-* Deployment instructions
+Then install the gem and run its database migrations:
 
-* ...
+```
+bundle install
+bundle exec rails generate roles
+bundle exec rails db:migrate
+```
+
+Finally, create the new `admin` role and assign it to your user with the
+following:
+
+```
+bundle exec rails c
+:001 > u = User.last
+:002 > u.roles << Role.first_or_create(name: 'admin') unless u.admin?
+```
+
+Now one can restart the Rails server:
+
+```
+bundle exec rails s -p 3000
+```
+
+### Creating a New Work
+
+After logging in with [http://localhost:3000/users/sign_in], please visit [http://localhost:3000/concern/my_works/new] and complete the ingest form.
+

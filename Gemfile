@@ -78,3 +78,4 @@ group :development, :test do
 end
 
 gem 'riiif', '~> 2.1'
+gem 'hydra-role-management'
